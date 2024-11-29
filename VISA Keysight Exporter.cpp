@@ -130,9 +130,6 @@ int main()
 	int bytes = DoQueryIEEEBlock(":waveform:data?");
 	std::cout << "Bytes Transferred: " << bytes << std::endl;
 
-	//FILE* createFilePtr;
-	//errno_t err = fopen_s(&createFilePtr, "out\\data.csv", "a");
-	//fclose(createFilePtr);
 	FILE* writeFilePtr;
 	errno_t err = fopen_s(&writeFilePtr, "data.csv", "w");
 
