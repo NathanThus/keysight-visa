@@ -278,8 +278,8 @@ void CloseConnection()
 	// Properly close the connections.
 	viClose(scope);
 	viClose(defaultRM);
-	std::cout << "Press enter to exit." << std::endl;
-	char* nothing= new char[80];
+	std::cout << "Press type anything & press enter to exit." << std::endl;
+	std::string nothing;
 	std::cin >> nothing;
 }
 
