@@ -9,7 +9,7 @@
 
 #define VISA_ADDRESS "USB0::0x2A8D::0x179B::CN59152133::0::INSTR"
 #define QUERY_DELAY std::chrono::milliseconds(200)
-#define PROBE_CHANNEL 2
+#define PROBE_CHANNEL "1"
 #define IEEEBLOCK_SPACE 5000000 // 5 Million. This requires at least 5MB of RAM
 
 // Known Indexes for :WAVeform:PREamble:
@@ -152,11 +152,11 @@ int main()
 
 	for (size_t i = 0; i < bytes; i++)
 	{
-		/* Write time value, voltage value. */
-		fprintf(writeFilePtr,"%9f, %6f\n",
+		/* Write time value, voltage value with inverted order in the column. */
+		size_t reversedIndex = bytes - 1 - i;
+		fprintf(writeFilePtr, "%9f, %6f\n",
 			x_origin + ((float)i * x_increment),
-			((y_reference -
-				(float)IEEEEBlockData[i]) * y_increment) - y_origin);
+			((y_reference - (float)IEEEEBlockData[reversedIndex]) * y_increment) - y_origin); // Inverted order in each column
 	}
 
 	fclose(writeFilePtr);
