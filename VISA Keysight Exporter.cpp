@@ -84,6 +84,10 @@ int main()
 		CloseConnection();
 		return -1;
 	}
+
+	std::cout << "Connection Succesful." << std::endl;
+	std::cout << "Peforming Setup." << std::endl;
+
 	std::cout << queryResultText; // Has EOL by default.
 	std::cout << "Do you want to use autoscale? (y/n)" << std::endl;
 	std::string useAutoscale;
@@ -97,8 +101,6 @@ int main()
 			return -1;
 		}
 	}
-
-	std::cout << "Peforming Setup." << std::endl;
 
 	if (DoCommand(":waveform:points:mode raw") == -1)
 	{
