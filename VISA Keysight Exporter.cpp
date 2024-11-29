@@ -9,7 +9,6 @@
 
 #define VISA_ADDRESS "USB0::0x2A8D::0x179B::CN59152133::0::INSTR"
 #define QUERY_DELAY std::chrono::milliseconds(200)
-#define PROBE_CHANNEL "1"
 #define IEEEBLOCK_SPACE 5000000 // 5 Million. This requires at least 5MB of RAM
 
 // Known Indexes for :WAVeform:PREamble:
@@ -106,8 +105,14 @@ int main()
 		CloseConnection();
 		return -1;
 	}
+	
+	std::cout << "Enter the probe channel (1 or 2): ";
+	std::string probeChannel;
+	std::cin >> probeChannel;
+	std::string probeCommand = ":waveform:source channel";
+	probeCommand.append(probeChannel);
 
-	if (DoCommand(":waveform:source channel2") == -1)
+	if (DoCommand(probeCommand.c_str()) == -1)
 	{
 		CloseConnection();
 		return -1;
