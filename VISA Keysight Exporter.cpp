@@ -270,6 +270,9 @@ void CloseConnection()
 	// Properly close the connections.
 	viClose(scope);
 	viClose(defaultRM);
+	std::cout << "Press enter to exit." << std::endl;
+	char* nothing= new char[80];
+	std::cin >> nothing;
 }
 
 void QuerySleep(std::chrono::milliseconds sleep)
