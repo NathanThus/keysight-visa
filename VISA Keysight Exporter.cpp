@@ -85,11 +85,17 @@ int main()
 		return -1;
 	}
 	std::cout << queryResultText; // Has EOL by default.
+	std::cout << "Do you want to use autoscale? (y/n)" << std::endl;
+	std::string useAutoscale;
+	std::cin >> useAutoscale;
 
-	if (DoCommand(":autoscale") == -1)
+	if (useAutoscale.at(0) == 'y' || useAutoscale.at(0) == 'Y')
 	{
-		CloseConnection();
-		return -1;
+		if (DoCommand(":autoscale") == -1)
+		{
+			CloseConnection();
+			return -1;
+		}
 	}
 
 	std::cout << "Peforming Setup." << std::endl;
