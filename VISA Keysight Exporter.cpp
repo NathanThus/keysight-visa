@@ -177,7 +177,7 @@ int main()
 	}
 
 	fclose(writeFilePtr);
-	std::cout<< "File Written To: data.csv" << std::endl;
+	std::cout<< "File Written To: " + fileName << std::endl;
 
 	CloseConnection();
 
