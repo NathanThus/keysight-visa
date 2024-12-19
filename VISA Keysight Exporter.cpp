@@ -144,7 +144,14 @@ int main()
 	std::cout << "Bytes Transferred: " << bytes << std::endl;
 
 	FILE* writeFilePtr;
-	errno_t err = fopen_s(&writeFilePtr, "data.csv", "w");
+	
+	std::cout << "Please enter a file name" << std::endl;
+
+	std::string fileName = "data";
+	std::cin >> fileName;
+	fileName.append(".csv");
+
+	errno_t err = fopen_s(&writeFilePtr, fileName.c_str(), "w");
 
 	if (err != 0)
 	{
